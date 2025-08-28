@@ -1,2 +1,2 @@
 # personal-portfolio
-link : [https://leningoud.netlify.app/]
+link : [netlify][https://leningoud.netlify.app/]
