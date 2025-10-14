@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,473 +6,230 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X73LVN8XHW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-X73LVN8XHW');
   </script>
 
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lenin Goud Athikam - Data Science Portfolio</title>
 
-  <title>Lenin G. Athikam — Data Science Portfolio</title>
-  <meta name="description" content="Lenin G. Athikam — Data Science Master's student at Michigan Technological University. Projects: YouTube comment sentiment analysis, Spotify hybrid recommender, Swiggy delivery time prediction.">
-  <meta name="keywords" content="Data Science, Machine Learning, NLP, Recommender Systems, Python, Michigan Technological University">
-  <meta name="author" content="Lenin G. Athikam">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Data Science portfolio of Lenin Goud Athikam, showcasing projects in machine learning, NLP, and data analytics.">
+  <meta name="keywords" content="Lenin Goud Athikam, Data Science, Machine Learning, NLP, Python, Portfolio, MTU, Data Scientist">
+  <meta name="author" content="Lenin Goud Athikam">
 
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Lenin G. Athikam — Data Science Portfolio">
-  <meta property="og:description" content="Explore projects in NLP, recommendation systems, and predictive modeling by Lenin G. Athikam.">
-  <meta property="og:image" content="./assets/images/my-avatar.png">
-  <meta property="og:type" content="website">
-
+  <!-- Social Media Meta Tags -->
+  <meta property="og:title" content="Lenin Goud Athikam - Data Science Portfolio">
+  <meta property="og:description" content="Portfolio showcasing projects in Machine Learning, NLP, and Data Analytics.">
+  <meta property="og:image" content="./assets/images/preview.png">
+  <meta property="og:url" content="https://github.com/leninathikam">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lenin Goud Athikam - Data Science Portfolio">
+  <meta name="twitter:description" content="Data Science portfolio featuring ML and NLP projects.">
+  <meta name="twitter:image" content="./assets/images/preview.png">
 
+  <!-- Favicon -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
-  <!-- Inline CSS block (extract to assets/css/style.css if you want separate files) -->
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    /* =========================
-       Variables
-       ========================= */
-    :root{
-      --bg: #f7fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #6b7280;
-      --accent: #2563eb; /* blue accent */
-      --accent-600: #1e40af;
-      --glass: rgba(255,255,255,0.6);
-      --shadow: 0 6px 18px rgba(16,24,40,0.06);
-      --radius: 12px;
+    html {
+      scroll-behavior: smooth;
     }
-
-    [data-theme="dark"]{
-      --bg: #0b1220;
-      --card: #071028;
-      --text: #e6eef8;
-      --muted: #9aa7bf;
-      --accent: #3b82f6;
-      --accent-600: #60a5fa;
-      --glass: rgba(10,14,22,0.6);
-      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+    .tech-tags {
+      font-size: 0.85rem;
+      color: #60a5fa;
+      margin-top: 5px;
+      display: block;
     }
-
-    /* =========================
-       Base
-       ========================= */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; 
-      background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;font-size:16px;
+    .thank-you {
+      display: none;
+      color: #4ade80;
+      font-weight: 500;
+      margin-top: 10px;
     }
-
-    a{color:var(--accent);text-decoration:none}
-    img{max-width:100%;display:block}
-
-    main{display:flex;min-height:100vh}
-
-    /* =========================
-       Sidebar
-       ========================= */
-    .sidebar{width:280px;padding:28px;background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.02));box-shadow:var(--shadow);border-radius:0 20px 20px 0;position:sticky;top:24px;height:calc(100vh - 48px);margin:24px}
-    .avatar-box img{border-radius:12px}
-    .name{margin:12px 0 4px;font-size:20px}
-    .title{color:var(--muted);font-size:13px;margin:0}
-    .info_more-btn{background:none;border:0;color:var(--accent);cursor:pointer;padding:8px 0;font-weight:600}
-
-    .contacts-list{list-style:none;padding:0;margin:16px 0 0}
-    .contact-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
-    .contact-title{font-size:12px;margin:0;color:var(--muted)}
-    .contact-link{font-size:14px}
-
-    .social-list{display:flex;gap:12px;margin-top:12px;padding:0;list-style:none}
-    .social-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:linear-gradient(180deg,var(--glass),transparent);}
-
-    /* =========================
-       Main content
-       ========================= */
-    .main-content{flex:1;padding:40px 60px}
-    .navbar{display:flex;justify-content:flex-end;margin-bottom:22px}
-    .navbar-list{display:flex;gap:8px;list-style:none;padding:0;margin:0}
-    .navbar-link{background:none;border:0;padding:8px 12px;border-radius:10px;cursor:pointer}
-    .navbar-link.active{background:linear-gradient(90deg,var(--accent),var(--accent-600));color:#fff}
-
-    .article-title{margin:0 0 14px;font-size:20px}
-
-    /* About */
-    .about-text p{color:var(--muted);margin-bottom:12px}
-
-    /* Services */
-    .service-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding:0;list-style:none}
-    .service-item{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow)}
-    .service-item-title{margin:0 0 6px}
-
-    /* Resume */
-    .timeline-list{padding-left:16px}
-    .timeline-item{margin-bottom:14px}
-
-    /* Skills */
-    .skills-list{list-style:none;padding:12px;background:var(--card);border-radius:12px}
-    .skills-item{margin-bottom:12px}
-    .skill-progress-bg{height:10px;background:rgba(0,0,0,0.06);border-radius:8px;margin-top:8px}
-    .skill-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-600));border-radius:8px}
-
-    /* Portfolio */
-    .projects{margin-top:10px}
-    .filter-list{display:flex;gap:8px;list-style:none;padding:0;margin:0 0 12px}
-    .filter-item button{border:0;padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer}
-    .filter-item button.active{background:var(--card);box-shadow:var(--shadow)}
-    .project-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;padding:0;list-style:none}
-    .project-item{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-    .project-img{height:140px;overflow:hidden}
-    .project-title{padding:12px 14px 6px;margin:0}
-    .project-category{padding:0 14px 12px;color:var(--muted);font-size:13px}
-    .project-actions{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(0,0,0,0.04)}
-    .btn{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:10px;border:0;cursor:pointer;background:var(--accent);color:#fff}
-    .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(0,0,0,0.06)}
-
-    /* Blog */
-    .blog-posts-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;list-style:none;padding:0}
-    .blog-banner-box{height:140px;overflow:hidden}
-
-    /* Contact */
-    .contact-form{max-width:640px;margin-top:12px}
-    .form-input{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);margin-bottom:10px;background:transparent;color:var(--text)}
-    .form-btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer}
-
-    /* Theme toggle */
-    .theme-toggle{border:0;background:transparent;cursor:pointer;padding:8px}
-
-    /* Responsive */
-    @media (max-width:900px){
-      .sidebar{display:none}
-      main{flex-direction:column}
-      .main-content{padding:20px}
-    }
-
   </style>
 </head>
 
 <body>
+
   <main>
 
-    <aside class="sidebar" aria-label="Sidebar">
-
+    <!-- Sidebar -->
+    <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Lenin G. Athikam avatar" width="100">
+          <img src="./assets/images/my-avatar.png" alt="Portrait of Lenin Goud Athikam" width="80">
         </figure>
-
         <div class="info-content">
-          <h1 class="name" title="Lenin G. Athikam">Lenin G. Athikam</h1>
-          <p class="title">Data Science Master's Student | Machine Learning | NLP</p>
+          <h1 class="name" title="Lenin Goud Athikam">Lenin Goud Athikam</h1>
+          <p class="title">Data Science Graduate Student</p>
         </div>
-
-        <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
-          <button class="info_more-btn" aria-expanded="false" id="contactsToggle">Show Contacts</button>
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
-        </div>
-
+        <button class="info_more-btn" aria-label="Show contact details" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
       </div>
 
-      <div class="sidebar-info_more" id="contactsPanel" hidden>
-
+      <div class="sidebar-info_more">
         <div class="separator"></div>
-
         <ul class="contacts-list">
-
           <li class="contact-item">
-            <div>
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
               <p class="contact-title">Email</p>
               <a href="mailto:lathikam@mtu.edu" class="contact-link">lathikam@mtu.edu</a>
             </div>
           </li>
-
           <li class="contact-item">
-            <div>
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
               <p class="contact-title">Phone</p>
               <a href="tel:+19062758632" class="contact-link">+1 (906) 275-8632</a>
             </div>
           </li>
-
           <li class="contact-item">
-            <div>
+            <div class="icon-box">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </div>
+            <div class="contact-info">
               <p class="contact-title">LinkedIn</p>
-              <a href="https://linkedin.com/in/athikam-lenin" class="contact-link" target="_blank" rel="noopener">athikam-lenin</a>
+              <a href="https://linkedin.com/in/athikam-lenin" class="contact-link" target="_blank">athikam-lenin</a>
             </div>
           </li>
-
           <li class="contact-item">
-            <div>
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
               <p class="contact-title">Location</p>
               <address>Houghton, Michigan, USA</address>
             </div>
           </li>
-
         </ul>
-
-        <div style="height:12px"></div>
-
-        <div>
-          <a class="btn" href="/personal-portfolio/assets/resume/Lenin_goud_Resume.pdf" download aria-label="Download resume">Download Resume</a>
-        </div>
-
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="https://linkedin.com/in/athikam-lenin" class="social-link" aria-label="LinkedIn profile" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://github.com/leninathikam" class="social-link" aria-label="GitHub profile" target="_blank">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+        </ul>
       </div>
-
     </aside>
 
+    <!-- Main Content -->
     <div class="main-content">
 
-      <nav class="navbar" aria-label="Top navigation">
-        <ul class="navbar-list" role="tablist">
-          <li class="navbar-item"><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="portfolio">Portfolio</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="blog">Blog</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
-        </ul>
-      </nav>
-
-      <!-- ABOUT -->
-      <article class="about" data-page="about">
-        <header><h2 class="h2 article-title">About me</h2></header>
-        <section class="about-text">
-          <p>I'm a passionate Data Science graduate student at Michigan Technological University with a strong foundation in Machine Learning, Deep Learning, and Statistical Analysis. I build end-to-end data solutions from cleaning and exploration to model deployment.</p>
-          <p>Internship experience at Edulyt India and YBI Foundation focused on SQL pipelines, ETL, NLP, and recommendation systems. I enjoy turning messy data into actionable insights.</p>
-        </section>
-
-        <section class="service">
-          <h3 class="h3 service-title">What I'm doing</h3>
-          <ul class="service-list">
-            <li class="service-item"><h4 class="h4 service-item-title">Data Science & Analytics</h4><p class="service-item-text">ETL pipelines, statistical analysis, visualization.</p></li>
-            <li class="service-item"><h4 class="h4 service-item-title">Machine Learning</h4><p class="service-item-text">Classification, regression, ensemble modeling, model validation.</p></li>
-            <li class="service-item"><h4 class="h4 service-item-title">NLP & Deep Learning</h4><p class="service-item-text">Text preprocessing, embeddings, sentiment analysis, transformers.</p></li>
-            <li class="service-item"><h4 class="h4 service-item-title">Model Deployment</h4><p class="service-item-text">Flask/Streamlit deployments and basic AWS/Heroku workflows.</p></li>
-          </ul>
-        </section>
-      </article>
-
-      <!-- RESUME -->
-      <article class="resume" data-page="resume" hidden>
-        <header><h2 class="h2 article-title">Resume</h2></header>
-        <section class="timeline">
-          <div class="title-wrapper"><h3 class="h3">Education</h3></div>
-          <ol class="timeline-list">
-            <li class="timeline-item"><h4 class="h4">Master of Science in Data Science — Michigan Technological University</h4><span>2024 — 2026</span>
-              <p class="timeline-text">Relevant coursework: Big Data Analytics, Machine Learning, Data Mining, Time Series, Regression Analysis.</p></li>
-            <li class="timeline-item"><h4 class="h4">Bachelor's in Artificial Intelligence — Parul University</h4><span>2020 — 2024</span>
-              <p class="timeline-text">GPA: 8.34/10. Focused on AI fundamentals and practical ML projects.</p></li>
-          </ol>
-        </section>
-
-        <section class="timeline">
-          <div class="title-wrapper"><h3 class="h3">Experience</h3></div>
-          <ol class="timeline-list">
-            <li class="timeline-item"><h4 class="h4">Data Science Intern - Edulyt India</h4><span>Dec 2023 — Mar 2024</span>
-              <p class="timeline-text">Built SQL ETL pipelines, automated reporting workflows, and KPI dashboards.</p></li>
-            <li class="timeline-item"><h4 class="h4">Data Science Intern - YBI Foundation</h4><span>Nov 2022 — Dec 2022</span>
-              <p class="timeline-text">Built an NLP-based recommender using TF-IDF and similarity metrics.</p></li>
-          </ol>
-        </section>
-
-        <section class="skill">
-          <h3 class="h3 skills-title">Technical Skills</h3>
-          <ul class="skills-list content-card">
-            <li class="skills-item"><div class="title-wrapper"><h5 class="h5">Python & Data Science</h5><data value="90">90%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:90%"></div></div></li>
-            <li class="skills-item"><div class="title-wrapper"><h5 class="h5">Machine Learning & Deep Learning</h5><data value="85">85%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:85%"></div></div></li>
-            <li class="skills-item"><div class="title-wrapper"><h5 class="h5">SQL & Database Management</h5><data value="80">80%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:80%"></div></div></li>
-          </ul>
-        </section>
-
-      </article>
-
-      <!-- PORTFOLIO -->
-      <article class="portfolio" data-page="portfolio" hidden>
-        <header><h2 class="h2 article-title">Portfolio</h2></header>
+      <!-- Portfolio -->
+      <article class="portfolio active" data-page="portfolio">
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
         <section class="projects">
+          <ul class="project-list">
 
-          <ul class="filter-list" role="toolbar" aria-label="Project filters">
-            <li class="filter-item"><button class="active" data-filter-btn data-filter="all">All</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter="ml">Machine Learning</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter="nlp">NLP</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter="analysis">Data Analysis</button></li>
-          </ul>
-
-          <ul class="project-list" id="projectList">
-
-            <!-- Project 1 -->
-            <li class="project-item" data-category="nlp">
-              <figure class="project-img"><img src="./assets/images/project-1.jpg" alt="YouTube Comments Sentiment Analysis" loading="lazy"></figure>
-              <h3 class="project-title">YouTube Comments Sentiment Analysis</h3>
-              <p class="project-category">NLP</p>
-              <div class="project-actions">
-                <a class="btn" href="https://github.com/leninathikam/youtube-comment-analysis" target="_blank" rel="noopener">View Code</a>
-                <a class="btn secondary" href="#" onclick="alert('No live demo available');return false;">Live Demo</a>
-              </div>
-            </li>
-
-            <!-- Project 2 -->
-            <li class="project-item" data-category="ml">
-              <figure class="project-img"><img src="./assets/images/project-2.png" alt="Spotify Hybrid Recommender System" loading="lazy"></figure>
-              <h3 class="project-title">Spotify Hybrid Recommender System</h3>
-              <p class="project-category">Machine Learning</p>
-              <div class="project-actions">
-                <a class="btn" href="https://github.com/leninathikam/spotify-hybrid-recommender-system" target="_blank" rel="noopener">View Code</a>
-                <a class="btn secondary" href="#" onclick="alert('No live demo available');return false;">Live Demo</a>
-              </div>
-            </li>
-
-            <!-- Project 3 -->
-            <li class="project-item" data-category="ml">
-              <figure class="project-img"><img src="./assets/images/project-3.jpg" alt="Swiggy Delivery Time Prediction" loading="lazy"></figure>
-              <h3 class="project-title">Swiggy Delivery Time Prediction</h3>
-              <p class="project-category">Machine Learning</p>
-              <div class="project-actions">
-                <a class="btn" href="https://github.com/leninathikam/swiggy-delivery-time-prediction" target="_blank" rel="noopener">View Code</a>
-                <a class="btn secondary" href="#" onclick="alert('No live demo available');return false;">Live Demo</a>
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-      </article>
-
-      <!-- BLOG -->
-      <article class="blog" data-page="blog" hidden>
-        <header><h2 class="h2 article-title">Blog</h2></header>
-        <section class="blog-posts">
-          <ul class="blog-posts-list">
-            <li class="blog-post-item">
-              <a href="#">
-                <figure class="blog-banner-box"><img src="./assets/images/blog-1.jpg" alt="Machine Learning Trends 2024" loading="lazy"></figure>
-                <div class="blog-content"><div class="blog-meta"><p class="blog-category">Machine Learning</p><span class="dot"></span><time datetime="2024-01-15">Jan 15, 2024</time></div>
-                <h3 class="h3 blog-item-title">Machine Learning Trends in 2024</h3>
-                <p class="blog-text">Exploring the latest developments in ML and their practical applications in industry.</p></div>
+            <li class="project-item active" data-filter-item data-category="nlp">
+              <a href="https://github.com/leninathikam/youtube-comment-analysis" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-1.jpg" alt="YouTube Sentiment Analysis Dashboard" loading="lazy">
+                </figure>
+                <h3 class="project-title">YouTube Comments Sentiment Analysis</h3>
+                <p class="project-category">NLP</p>
+                <span class="tech-tags">Python • NLTK • WordCloud • Streamlit</span>
               </a>
             </li>
+
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/leninathikam/spotify-recommender-system" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-2.png" alt="Spotify Hybrid Recommendation System Dashboard" loading="lazy">
+                </figure>
+                <h3 class="project-title">Spotify Hybrid Recommender System</h3>
+                <p class="project-category">Machine Learning</p>
+                <span class="tech-tags">Python • Scikit-learn • Flask • AWS</span>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/leninathikam/swiggy-delivery-time-prediction" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-3.jpg" alt="Swiggy Delivery Time Prediction Model Visualization" loading="lazy">
+                </figure>
+                <h3 class="project-title">Swiggy Delivery Time Prediction</h3>
+                <p class="project-category">Machine Learning</p>
+                <span class="tech-tags">Python • XGBoost • Pandas • Matplotlib</span>
+              </a>
+            </li>
+
           </ul>
         </section>
       </article>
 
-      <!-- CONTACT -->
-      <article class="contact" data-page="contact" hidden>
-        <header><h2 class="h2 article-title">Contact</h2></header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11457.182472327084!2d-88.567091!3d47.121884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8836b0f0c4578535%3A0x1bbf42737df27b0c!2sHoughton%2C%20MI%2C%20USA!5e0!3m2!1sen!2sbd!4v1699440000000!5m2!1sen!2sbd" width="100%" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </figure>
-        </section>
-
+      <!-- Contact -->
+      <article class="contact" data-page="contact">
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
         <section class="contact-form">
           <h3 class="h3 form-title">Contact Form</h3>
-          <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="form" onsubmit="handleFormSubmit(event)">
+          <form name="contact" method="POST" data-netlify="true" class="form" data-form>
             <input type="hidden" name="form-name" value="contact">
-            <p style="display:none"> <label>Don’t fill this out if you're human: <input name="bot-field"></label></p>
-
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required aria-label="Full name">
-              <input type="email" name="email" class="form-input" placeholder="Email address" required aria-label="Email address">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required aria-label="Message"></textarea>
-
-            <button class="form-btn" type="submit">Send Message</button>
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <button class="form-btn" type="submit" data-form-btn aria-label="Send message">
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+            <p class="thank-you">Thank you for reaching out! I'll get back to you soon.</p>
           </form>
-
-          <div id="formStatus" role="status" aria-live="polite" style="margin-top:12px"></div>
         </section>
-
       </article>
-
     </div>
-
   </main>
 
-  <!-- Inline JS (extract to assets/js/script.js if you want separate file) -->
-  <script>
-    // -------------------- Helpers --------------------
-    const qs = sel => document.querySelector(sel);
-    const qsa = sel => Array.from(document.querySelectorAll(sel));
-
-    // -------------------- Page navigation --------------------
-    qsa('[data-nav-link]').forEach(btn => btn.addEventListener('click', e => {
-      const target = e.currentTarget.dataset.target;
-      qsa('[data-nav-link]').forEach(b=>b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      qsa('[data-page]').forEach(p=>p.hidden = true);
-      document.querySelector(`[data-page="${target}"]`).hidden = false;
-      window.scrollTo({top:0,behavior:'smooth'});
-    }));
-
-    // -------------------- Contacts toggle --------------------
-    const contactsToggle = qs('#contactsToggle');
-    const contactsPanel = qs('#contactsPanel');
-    contactsToggle.addEventListener('click', ()=>{
-      const expanded = contactsToggle.getAttribute('aria-expanded') === 'true';
-      contactsToggle.setAttribute('aria-expanded', String(!expanded));
-      contactsPanel.hidden = !contactsPanel.hidden;
-    });
-
-    // -------------------- Theme toggle --------------------
-    const themeToggle = qs('#themeToggle');
-    const root = document.documentElement;
-    const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    if(currentTheme === 'dark') document.documentElement.setAttribute('data-theme','dark');
-    themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-    themeToggle.addEventListener('click', ()=>{
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if(isDark){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme','light'); themeToggle.textContent='🌙'}
-      else{ document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); themeToggle.textContent='☀️'}
-    });
-
-    // -------------------- Project filtering --------------------
-    qsa('[data-filter-btn]').forEach(btn => btn.addEventListener('click', e=>{
-      qsa('[data-filter-btn]').forEach(b=>b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      const filter = e.currentTarget.dataset.filter;
-      qsa('.project-item').forEach(item => {
-        if(filter === 'all') item.style.display = '';
-        else item.style.display = item.dataset.category === filter ? '' : 'none';
-      });
-    }));
-
-    // -------------------- Form handling --------------------
-    function handleFormSubmit(ev){
-      ev.preventDefault();
-      const form = ev.target;
-      const status = qs('#formStatus');
-      const data = new FormData(form);
-
-      // Basic UX feedback
-      const submitBtn = form.querySelector('button[type="submit"]');
-      submitBtn.disabled = true; submitBtn.textContent = 'Sending...';
-
-      // Use fetch to submit to Netlify (works if deployed)
-      fetch('/', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams([...data])})
-        .then(()=>{
-          status.textContent = 'Thanks! Your message has been sent.';
-          form.reset();
-        })
-        .catch(()=>{ status.textContent = 'Oops — there was a problem sending your message. Please email me at lathikam@mtu.edu'; })
-        .finally(()=>{ submitBtn.disabled = false; submitBtn.textContent = 'Send Message'; });
-    }
-
-    // -------------------- Accessibility: keyboard shortcut to toggle theme (T) --------------------
-    document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase() === 't'){ themeToggle.click(); }});
-
-    // -------------------- Small enhancement: link resume if file exists --------------------
-    // (Leave as-is; user may replace path when deploying.)
-
-  </script>
-
-  <!-- Ionicons for icons (kept) -->
+  <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+  <script>
+    document.querySelector('.form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      this.querySelector('.thank-you').style.display = 'block';
+      this.reset();
+    });
+  </script>
 </body>
+
 </html>
