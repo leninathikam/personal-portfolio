@@ -188,9 +188,46 @@
             <button class="navbar-link" data-nav-link>Contact</button>
           </li>
 
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Features</button>
+          </li>
+
         </ul>
 
       </nav>
+
+      <!-- Personalized Greeting -->
+      <div class="greeting-banner">
+        <h2 id="personalizedGreeting">Hello!</h2>
+      </div>
+
+      <script>
+        const greetingElement = document.getElementById('personalizedGreeting');
+        const hours = new Date().getHours();
+        let greetingMessage = 'Hello!';
+
+        if (hours < 12) {
+          greetingMessage = 'Good Morning! ☀️';
+        } else if (hours < 18) {
+          greetingMessage = 'Good Afternoon! 😊';
+        } else {
+          greetingMessage = 'Good Evening! 🌙';
+        }
+
+        greetingElement.textContent = greetingMessage;
+      </script>
+
+      <style>
+        .greeting-banner {
+          text-align: center;
+          padding: 1.5rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          margin: 1rem 0;
+          border-radius: 8px;
+          font-size: 1.8rem;
+        }
+      </style>
 
       <!--
         - #ABOUT
@@ -336,11 +373,30 @@
               </div>
             </li>
 
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="https://www.datacamp.com/branding-kit/datacamp-logo-400x400.png" alt="DataCamp" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>DataCamp Data Scientist Associate</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Data Scientist Associate certification issued Feb 2026 (Expires Feb 2028). Credential ID: DSA0019923761310. Covers Data Science, Python Programming, and 3+ additional skills with hands-on projects and real-world applications.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
           </ul>
 
         </section>
 
         <!--
+
           - testimonials modal
         -->
 
@@ -839,6 +895,50 @@
         
       </article>
 
+      <!--
+        - #FEATURES
+      -->
+
+      <article class="features" data-page="features">
+
+        <header>
+          <h2 class="h2 article-title">Fun Features & Gamification</h2>
+        </header>
+
+        <!-- Language Translation -->
+        <section class="feature-item">
+          <h3 class="h3">🌍 Language Selection</h3>
+          <p>Switch between languages to view the page in your preferred language:</p>
+          <button class="lang-btn" onclick="translatePage('en')">English</button>
+          <button class="lang-btn" onclick="translatePage('es')">Español</button>
+        </section>
+
+        <!-- Gamification -->
+        <section class="feature-item">
+          <h3 class="h3">🎮 Gamification - Test Your Knowledge</h3>
+          <p>Can you answer questions about my skills and experience?</p>
+          <button class="quiz-btn" onclick="startQuiz()">Start Quiz</button>
+          <div id="quizContainer" style="display: none; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; margin-top: 1rem;">
+            <p id="quizQuestion" style="font-weight: bold; margin-bottom: 1rem;">Loading question...</p>
+            <div id="quizButtons"></div>
+          </div>
+        </section>
+
+        <!-- Chatbot -->
+        <section class="feature-item">
+          <h3 class="h3">💬 AI Chatbot - Ask Me Anything</h3>
+          <p>Chat with an AI-powered assistant about my portfolio, skills, and experience:</p>
+          <div id="chatContainer" class="chat-container">
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-wrapper">
+              <input id="chatInput" type="text" placeholder="Type your message..." class="chat-input" />
+              <button id="sendButton" class="chat-send-btn">Send</button>
+            </div>
+          </div>
+        </section>
+
+      </article>
+
     </div>
 
   </main>
@@ -847,6 +947,368 @@
     - custom js link
   -->
   <script src="./assets/js/script.js"></script>
+
+  <!--
+    - custom styling for new features
+  -->
+  <style>
+    .feature-item {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background-color: #f8f9fa;
+      border-left: 4px solid #667eea;
+      border-radius: 8px;
+    }
+
+    .lang-btn, .quiz-btn {
+      margin: 0.5rem 0.5rem 0.5rem 0;
+      padding: 0.7rem 1.5rem;
+      background-color: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .lang-btn:hover, .quiz-btn:hover {
+      background-color: #764ba2;
+      transform: scale(1.05);
+    }
+
+    #quizContainer {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    #quizButtons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .quiz-answer-btn {
+      padding: 0.8rem 1.2rem;
+      background-color: #f0f0f0;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .quiz-answer-btn:hover {
+      background-color: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      margin-bottom: 1rem;
+    }
+
+    .chat-message {
+      margin-bottom: 0.8rem;
+      padding: 0.8rem;
+      border-radius: 4px;
+      word-wrap: break-word;
+    }
+
+    .chat-message.user {
+      background-color: #667eea;
+      color: white;
+      text-align: right;
+    }
+
+    .chat-message.bot {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    .chat-input-wrapper {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .chat-send-btn {
+      padding: 0.8rem 1.5rem;
+      background-color: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .chat-send-btn:hover {
+      background-color: #764ba2;
+    }
+  </style>
+
+  <!--
+    - script for new features
+  -->
+  <script>
+    // Quiz functionality
+    const quizzes = [
+      {
+        question: "What is my favorite programming language?",
+        options: ["JavaScript", "Python", "C++"],
+        answer: "Python"
+      },
+      {
+        question: "What is my current degree?",
+        options: ["Bachelor's in AI", "Master's in Data Science", "MBA"],
+        answer: "Master's in Data Science"
+      },
+      {
+        question: "Which company did I intern at first?",
+        options: ["Google", "Edulyt India", "YBI Foundation"],
+        answer: "Edulyt India"
+      }
+    ];
+
+    let currentQuiz = 0;
+
+    function startQuiz() {
+      currentQuiz = 0;
+      const container = document.getElementById('quizContainer');
+      container.style.display = 'block';
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const quiz = quizzes[currentQuiz];
+      document.getElementById('quizQuestion').textContent = quiz.question;
+      
+      const buttonsDiv = document.getElementById('quizButtons');
+      buttonsDiv.innerHTML = '';
+      
+      quiz.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-answer-btn';
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option);
+        buttonsDiv.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(answer) {
+      const quiz = quizzes[currentQuiz];
+      if (answer === quiz.answer) {
+        alert('✅ Correct!');
+      } else {
+        alert('❌ Try Again! The correct answer is: ' + quiz.answer);
+      }
+      
+      currentQuiz++;
+      if (currentQuiz < quizzes.length) {
+        showQuestion();
+      } else {
+        alert('🎉 Quiz completed! Thanks for playing!');
+        document.getElementById('quizContainer').style.display = 'none';
+      }
+    }
+
+    // Language translation
+    let currentLanguage = 'en';
+
+    function translatePage(language) {
+      currentLanguage = language;
+      
+      const translations = {
+        en: {
+          greeting: 'Hello!',
+          featuresTitle: 'Fun Features & Gamification',
+          languageTitle: '🌍 Language Selection',
+          languageDesc: 'Switch between languages to view the page in your preferred language:',
+          quizTitle: '🎮 Gamification - Test Your Knowledge',
+          quizDesc: 'Can you answer questions about my skills and experience?',
+          quizBtn: 'Start Quiz',
+          chatTitle: '💬 AI Chatbot - Ask Me Anything',
+          chatDesc: 'Chat with an AI-powered assistant about my portfolio, skills, and experience:',
+          chatPlaceholder: 'Type your message...',
+          quiz_q1: 'What is my favorite programming language?',
+          quiz_q2: 'What is my current degree?',
+          quiz_q3: 'Which company did I intern at first?',
+          correct: '✅ Correct!',
+          tryAgain: '❌ Try Again! The correct answer is: ',
+          quizComplete: '🎉 Quiz completed! Thanks for playing!',
+          languageChanged: 'Language changed to English'
+        },
+        es: {
+          greeting: '¡Hola!',
+          featuresTitle: 'Características Divertidas y Gamificación',
+          languageTitle: '🌍 Selección de Idioma',
+          languageDesc: 'Cambia entre idiomas para ver la página en tu idioma preferido:',
+          quizTitle: '🎮 Gamificación - Prueba tus Conocimientos',
+          quizDesc: '¿Puedes responder preguntas sobre mis habilidades y experiencia?',
+          quizBtn: 'Comenzar Quiz',
+          chatTitle: '💬 Chatbot IA - Pregúntame Cualquier Cosa',
+          chatDesc: 'Chatea con un asistente impulsado por IA sobre mi portafolio, habilidades y experiencia:',
+          chatPlaceholder: 'Escribe tu mensaje...',
+          quiz_q1: '¿Cuál es mi lenguaje de programación favorito?',
+          quiz_q2: '¿Cuál es mi título actual?',
+          quiz_q3: '¿En qué empresa hice mi primera pasantía?',
+          correct: '✅ ¡Correcto!',
+          tryAgain: '❌ ¡Intenta de nuevo! La respuesta correcta es: ',
+          quizComplete: '🎉 ¡Quiz completado! ¡Gracias por jugar!',
+          languageChanged: 'Idioma cambiado a Español'
+        }
+      };
+
+      const trans = translations[language];
+
+      // Update all text elements
+      document.getElementById('personalizedGreeting').textContent = trans.greeting;
+      
+      const featuresArticle = document.querySelector('article[data-page="features"]');
+      if (featuresArticle) {
+        const h2 = featuresArticle.querySelector('h2');
+        if (h2) h2.textContent = trans.featuresTitle;
+
+        const sections = featuresArticle.querySelectorAll('.feature-item');
+        
+        if (sections[0]) {
+          const h3 = sections[0].querySelector('h3');
+          if (h3) h3.textContent = trans.languageTitle;
+          const p = sections[0].querySelector('p');
+          if (p) p.textContent = trans.languageDesc;
+        }
+
+        if (sections[1]) {
+          const h3 = sections[1].querySelector('h3');
+          if (h3) h3.textContent = trans.quizTitle;
+          const p = sections[1].querySelector('p');
+          if (p) p.textContent = trans.quizDesc;
+          const btn = sections[1].querySelector('.quiz-btn');
+          if (btn) btn.textContent = trans.quizBtn;
+        }
+
+        if (sections[2]) {
+          const h3 = sections[2].querySelector('h3');
+          if (h3) h3.textContent = trans.chatTitle;
+          const p = sections[2].querySelector('p');
+          if (p) p.textContent = trans.chatDesc;
+          const input = document.getElementById('chatInput');
+          if (input) input.placeholder = trans.chatPlaceholder;
+        }
+      }
+
+      // Update quiz questions
+      quizzes[0].question = trans.quiz_q1;
+      quizzes[1].question = trans.quiz_q2;
+      quizzes[2].question = trans.quiz_q3;
+
+      alert(trans.languageChanged);
+    }
+
+    // Chatbot functionality with Netlify Function backend
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const sendButton = document.getElementById('sendButton');
+
+    async function callGeminiAPI(userMessage) {
+      try {
+        const response = await fetch('/.netlify/functions/gemini', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: userMessage
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'API request failed');
+        }
+
+        const data = await response.json();
+        return data.reply || "I couldn't generate a response. Please try again.";
+      } catch (error) {
+        console.error('Gemini API Error:', error);
+        return `Sorry, I encountered an error: ${error.message}. Please try again.`;
+      }
+    }
+
+    function addMessageToChat(sender, message) {
+      const messageElement = document.createElement('div');
+      messageElement.className = `chat-message ${sender === 'You' ? 'user' : 'bot'}`;
+      messageElement.textContent = `${sender}: ${message}`;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    sendButton.addEventListener('click', async () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+
+      addMessageToChat('You', userMessage);
+      chatInput.value = '';
+      sendButton.disabled = true;
+      sendButton.textContent = 'Sending...';
+
+      // Show typing indicator
+      const typingElement = document.createElement('div');
+      typingElement.className = 'chat-message bot';
+      typingElement.id = 'typing-indicator';
+      typingElement.textContent = 'Bot: typing...';
+      chatMessages.appendChild(typingElement);
+
+      try {
+        const botResponse = await callGeminiAPI(userMessage);
+        
+        // Remove typing indicator
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) typingIndicator.remove();
+        
+        addMessageToChat('Bot', botResponse);
+      } catch (error) {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) typingIndicator.remove();
+        addMessageToChat('Bot', 'Sorry, I encountered an error. Please try again.');
+      } finally {
+        sendButton.disabled = false;
+        sendButton.textContent = 'Send';
+      }
+    });
+
+    // Allow Enter key to send message
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !sendButton.disabled) {
+        sendButton.click();
+      }
+    });
+  </script>
 
   <!--
     - ionicon link
