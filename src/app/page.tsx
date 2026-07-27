@@ -6,6 +6,7 @@ import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 import Experience from "@/components/experience";
 import Education from "@/components/education";
+import GitHubStats from "@/components/github-stats";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 
@@ -42,6 +43,10 @@ export default function Home() {
           <hr className="border-border" />
         </div>
         <Education />
+        <div className="mx-auto max-w-6xl px-6">
+          <hr className="border-border" />
+        </div>
+        <GitHubStats />
         <div className="mx-auto max-w-6xl px-6">
           <hr className="border-border" />
         </div>

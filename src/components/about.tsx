@@ -9,7 +9,7 @@ const focusAreas = [
     icon: Bot,
     title: "LLM Agents & RAG",
     description:
-      "Multi-agent systems with tool use, memory, and retrieval-augmented generation. Built evaluation frameworks to measure agent reliability.",
+      "RAG systems with secure architectures, multi-agent workflows using CrewAI and LangChain, and LLM evaluation with LangSmith and Ragas.",
   },
   {
     icon: BrainCircuit,
@@ -27,7 +27,7 @@ const focusAreas = [
     icon: Rocket,
     title: "Deployment & MLOps",
     description:
-      "Streamlit apps, Flask APIs, Docker containers, and AWS deployments. Every project includes testing and is structured for reproducibility.",
+      "FastAPI and Streamlit apps, Docker containers, AWS (EC2, Lambda, SageMaker), and Hugging Face Spaces deployments with CI/CD.",
   },
 ];
 
@@ -47,16 +47,17 @@ export default function About() {
           >
             <p className="text-lg leading-relaxed text-text-secondary">
               I recently completed my MS in Data Science at Michigan Tech, where
-              I spent two years building AI systems that actually ship —
-              multi-agent LLM frameworks, RAG pipelines with evaluation loops,
-              and ML models with testing and deployment baked in.
+              I built production AI systems — RAG pipelines, multi-agent
+              workflows, and ML models with testing and deployment baked in.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-              As a Research Assistant, I designed multi-agent collaboration
-              systems and published 5+ open-source projects. Before grad school,
-              I earned a B.Tech in AI from Parul University and worked as a Data
-              Scientist and Data Analyst, where I automated reporting workflows
-              saving 20+ hours/month and built dashboards adopted by 50+ users.
+              As a Research Assistant, I focused on Secure RAG architectures and
+              adversarial LLM defense. As a Teaching Assistant, I guided 70+
+              students through ML, neural networks, and transformer concepts.
+              Before grad school, I earned a B.Tech in CS (AI) from Parul
+              University and interned as a Data Scientist and Data Analyst,
+              improving forecasting accuracy by 15% and contributing to a 12%
+              boost in student retention through data-driven insights.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-text-secondary">
               Actively seeking full-time{" "}

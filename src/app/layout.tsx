@@ -76,6 +76,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
+  other: {
+    "theme-color": "#0a0a0b",
+  },
 };
 
 const jsonLd = {
@@ -86,7 +89,7 @@ const jsonLd = {
   jobTitle: "AI/ML Engineer & Data Scientist",
   description:
     "Recent MS graduate specializing in LLM agents, RAG pipelines, and production ML systems. Open to Data Science, ML Engineering, and AI Engineering roles.",
-  email: "lathikam@mtu.edu",
+  email: "leningoudzzz@gmail.com",
   sameAs: [
     "https://github.com/leninathikam",
     "https://www.linkedin.com/in/athikam-lenin",
@@ -122,7 +125,7 @@ const jsonLd = {
     {
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "degree",
-      name: "Bachelor of Technology in Artificial Intelligence",
+      name: "Bachelor of Technology in Computer Science (AI Specialization)",
     },
   ],
 };
@@ -148,6 +151,9 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link rel="canonical" href="https://leningoud.netlify.app" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

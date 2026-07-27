@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Lenin Goud Athikam",
   title: "AI/ML Engineer & Data Scientist",
-  email: "lathikam@mtu.edu",
+  email: "leningoudzzz@gmail.com",
   phone: "+1 (906) 275-8632",
   location: "Houghton, Michigan, USA",
   github: "https://github.com/leninathikam",
@@ -16,6 +16,7 @@ export const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
+  { label: "GitHub", href: "#github" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -35,19 +36,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "AI Council — Multi-Agent Collaboration Framework",
-    slug: "ai-council",
+    title: "AI-Powered Digital Twin",
+    slug: "ai-digital-twin",
     category: "LLM Agents",
     summary:
-      "Framework where multiple AI models (Gemini, Claude, GPT, Ollama) collaborate through structured discussion modes with specialized roles.",
+      "A personal AI digital twin that answers questions about my background using RAG and notifies me when someone wants to connect.",
     problem:
-      "Single-model AI responses lack the depth and reliability that comes from multi-perspective analysis, critique, and validation.",
+      "Recruiters and collaborators visiting a portfolio can't get instant, conversational answers about a candidate's background, skills, and projects.",
     solution:
-      "Built a multi-agent framework with specialized roles (Proposer, Critic, Corrector, Validator) supporting Round Robin, Debate, Deep Analysis, Code Review, and Executive discussion modes. Includes auto-fallback, circuit breaker protection, and token optimization.",
+      "Built a production-ready conversational digital twin by integrating LLMs, contextual memory, and RAG pipelines with ChromaDB vector search and optimized chunking strategies. Deployed on Hugging Face Spaces with real-time inference and API integration.",
     results:
-      "Reduced token usage by 40–70% through optimization. Supports 5 discussion modes across 4+ model providers. Rich CLI with minimal-config setup wizard.",
-    stack: ["Python", "Multi-Agent", "Gemini", "Claude", "GPT", "Ollama"],
-    github: "https://github.com/leninathikam/ai-council",
+      "Live conversational AI with scalable interaction workflows deployed to production. End-to-end system covering prompt engineering, tokenization, API cost management, and real-time inference.",
+    stack: ["Python", "LangChain", "ChromaDB", "Hugging Face", "RAG", "Tool Calling"],
+    github: "https://github.com/leninathikam",
+    demo: "https://huggingface.co/spaces/Leningoud/digital-twin",
     featured: true,
   },
   {
@@ -59,10 +61,10 @@ export const projects: Project[] = [
     problem:
       "Converting product specifications into structured engineering tasks requires manual decomposition across multiple roles — product managers, architects, and developers.",
     solution:
-      "Built 7 reusable Python agent classes (spec analyzer, story writer, feature planner, task generator, reviewer, router, evaluator) that collaborate through a routing and evaluation pipeline. Piloted with an Email Router use case.",
+      "Designed autonomous agent collaboration and task orchestration using CrewAI and LangChain. Built specialized AI agents for requirement analysis, task planning, progress tracking, and report generation with memory-aware communication and tool calling.",
     results:
-      "End-to-end pipeline that processes specs into actionable tasks. Reusable agent architecture adaptable to other multi-step workflows. Demonstrated agent routing and evaluation in Email Router pilot.",
-    stack: ["Python", "Multi-Agent", "Routing", "Evaluation"],
+      "End-to-end multi-agent workflow that reduces manual coordination effort. Autonomous agents handle requirement analysis through report generation with memory-aware communication.",
+    stack: ["Python", "CrewAI", "LangChain", "OpenAI API"],
     github:
       "https://github.com/leninathikam/AI-Powered-Agentic-Workflow-for-Project-Management",
     featured: true,
@@ -95,25 +97,25 @@ export const projects: Project[] = [
     solution:
       "Built a Chrome extension with a complete ML pipeline: training data collection, text preprocessing, scikit-learn model training, and real-time prediction on live YouTube pages.",
     results:
-      "Working Chrome extension that classifies comments as positive/negative/neutral in real-time. End-to-end from model training to browser deployment — demonstrates full-stack ML capability.",
+      "NLP sentiment classification achieving 87% accuracy across 10K+ YouTube comments. Real-time Chrome extension integrated with Flask backend for automated comment analysis.",
     stack: ["Python", "scikit-learn", "Chrome Extension", "NLP"],
     github:
       "https://github.com/leninathikam/youtube_comment_analysis_chrome_plugin",
     featured: true,
   },
   {
-    title: "Beaver's Choice Sales Team",
-    slug: "beavers-choice",
+    title: "Multi-Agent Inventory & Quotation System",
+    slug: "multi-agent-inventory",
     category: "LLM Agents",
     summary:
-      "4-agent sales workflow processing 20 quote requests with SQLite-backed inventory.",
+      "Multi-agent sales and inventory management system for inquiry handling, quote generation, and order fulfillment.",
     problem:
-      "Manual sales quoting is slow and error-prone, especially when handling bulk pricing tiers and inventory tracking across multiple product lines.",
+      "Manual sales quoting is slow and error-prone, especially when handling pricing tiers, inventory validation, and supplier estimation across multiple product lines.",
     solution:
-      "Designed a 4-agent sales workflow using smolagents: lead qualifier, inventory checker, pricing engine, and quote generator. Backed by SQLite for real-time inventory and transaction tracking.",
+      "Built an orchestrator agent coordinating specialized agents for pricing, inventory validation, and supplier estimation. SQLite-based tools enable real-time fulfillment updates across the pipeline.",
     results:
-      "Processed 20 quote requests with 5–15% bulk discounts applied automatically. $48.7K in assets tracked. Demonstrated multi-agent coordination with persistent state.",
-    stack: ["Python", "smolagents", "SQLite", "Multi-Agent"],
+      "Improved operational efficiency through automated customer inquiry handling, quote generation, and order fulfillment with real-time inventory tracking.",
+    stack: ["Python", "Agentic AI", "SQLite", "Multi-Agent Systems"],
     github:
       "https://github.com/leninathikam/The-Beaver-s-Choice-Paper-Company-Sales-Team-",
     featured: false,
@@ -129,7 +131,7 @@ export const projects: Project[] = [
     solution:
       "Built a hybrid recommender combining collaborative filtering and content-based methods. Includes a Streamlit interface, pytest test suite, and deployment-ready artifact packaging.",
     results:
-      "Improved recommendation relevance by combining multiple filtering strategies. Production-ready with automated tests, UI, and deployable artifacts.",
+      "Improved playlist recommendation precision by 22% through hybrid filtering with similarity-based ranking. Production-ready with automated tests, interactive Streamlit UI, and deployable artifacts.",
     stack: ["Python", "Streamlit", "Hybrid Filtering", "pytest"],
     github:
       "https://github.com/leninathikam/spotify-hybrid-recommender-system",
@@ -146,7 +148,7 @@ export const projects: Project[] = [
     solution:
       "Comprehensive ML pipeline with 10+ notebooks covering EDA, feature engineering, and model tuning. Compared LightGBM, Random Forest, and stacking ensembles for optimal prediction accuracy.",
     results:
-      "Tuned ensemble models for delivery time prediction in minutes. Thorough EDA and feature engineering across 10+ notebooks demonstrate rigorous ML methodology.",
+      "Reduced prediction RMSE by 15% with tuned Gradient Boosting and XGBoost models. Optimized pipeline reduced inference latency by 25%.",
     stack: ["Python", "LightGBM", "Random Forest", "Stacking"],
     github: "https://github.com/leninathikam/swiggy-delivery-time-prediction",
     featured: false,
@@ -177,49 +179,59 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
-    skills: ["Python", "SQL", "R", "JavaScript"],
+    skills: ["Python", "SQL", "R"],
   },
   {
-    title: "Machine Learning",
+    title: "AI Product Development",
     skills: [
-      "scikit-learn",
-      "LightGBM",
-      "XGBoost",
-      "Random Forest",
-      "Feature Engineering",
+      "RAG System Design",
+      "Prompt Engineering",
+      "Context Engineering",
+      "Tool Calling",
+      "AI Agents",
+      "Multi-Agent Systems",
+      "MCP",
+      "A2A",
     ],
   },
   {
-    title: "Deep Learning",
-    skills: ["PyTorch", "TensorFlow", "Neural Networks", "CNNs"],
-  },
-  {
-    title: "Generative AI & LLMs",
+    title: "Generative AI & LLM Frameworks",
     skills: [
       "LangChain",
-      "OpenAI APIs",
-      "RAG Pipelines",
-      "smolagents",
-      "Vector Databases",
-      "Prompt Engineering",
-      "Multi-Agent Systems",
+      "LangGraph",
+      "CrewAI",
+      "OpenAI API",
+      "Hugging Face Transformers",
+      "NLP",
     ],
   },
   {
-    title: "Data Engineering",
-    skills: ["Pandas", "NumPy", "ETL Pipelines", "Data Modeling", "Apache Spark"],
+    title: "Machine Learning & Deep Learning",
+    skills: [
+      "scikit-learn",
+      "XGBoost",
+      "PyTorch",
+      "TensorFlow",
+      "Feature Engineering",
+      "Model Evaluation",
+      "Predictive Modeling",
+    ],
   },
   {
-    title: "Cloud & DevOps",
-    skills: ["AWS", "Docker", "CI/CD", "Linux"],
+    title: "Vector Databases & Retrieval",
+    skills: ["ChromaDB", "FAISS", "Semantic Retrieval", "PostgreSQL", "MongoDB", "SQLite"],
   },
   {
-    title: "Visualization & BI",
-    skills: ["Power BI", "Tableau", "Matplotlib", "Seaborn", "Plotly"],
+    title: "LLM Evaluation & MLOps",
+    skills: ["LangSmith", "Ragas", "Prompt Evaluation", "LLM Tracing", "Model Deployment"],
   },
   {
-    title: "Developer Tools",
-    skills: ["Git", "GitHub", "Streamlit", "Flask", "pytest", "VS Code"],
+    title: "Cloud & Deployment",
+    skills: ["AWS (EC2, Lambda, SageMaker)", "Hugging Face Spaces", "Docker", "CI/CD", "REST APIs"],
+  },
+  {
+    title: "Frameworks & Tools",
+    skills: ["FastAPI", "Streamlit", "Pandas", "NumPy", "Matplotlib", "Power BI", "Git/GitHub"],
   },
 ];
 
@@ -235,46 +247,44 @@ export const experiences: Experience[] = [
   {
     role: "Research Assistant",
     company: "Michigan Technological University",
-    period: "Jan 2025 — Apr 2026",
+    period: "Jan 2026 — Apr 2026",
     bullets: [
-      "Designed and built multi-agent AI systems with structured collaboration modes (debate, deep analysis, code review) across Gemini, Claude, and GPT models.",
-      "Developed RAG pipelines with modular retrieval, embedding, and evaluation components — enabling measurable comparison of retrieval strategies.",
-      "Published 5+ open-source AI/ML projects on GitHub covering agentic workflows, NLP, and recommendation systems.",
+      "Strengthened RAG system security by researching Secure RAG architectures and designing defensive validation mechanisms against prompt injection and jailbreak attacks.",
+      "Investigated adversarial attack vectors — including prompt injection, retrieval poisoning, and unauthorized information disclosure — to inform safer LLM deployment practices.",
     ],
-    tech: ["Python", "LangChain", "RAG", "Multi-Agent", "Vector DBs"],
+    tech: ["Python", "RAG", "LLM Security", "Adversarial ML", "LangChain"],
   },
   {
     role: "Computational Intelligence Teaching Assistant",
     company: "Michigan Technological University",
     period: "Aug 2025 — Dec 2025",
     bullets: [
-      "Assisted instruction for graduate-level Computational Intelligence course covering neural networks, evolutionary algorithms, and fuzzy systems.",
-      "Graded assignments and provided detailed feedback to 30+ students on ML model implementations and algorithm analysis.",
-      "Held weekly office hours to support students with Python-based ML project development and debugging.",
+      "Guided 70+ students through machine learning, neural network, transformer, and large language model concepts, strengthening their applied AI development skills.",
+      "Delivered technical mentorship on model implementation and evaluation methodologies, supporting coursework, grading, and consistent learning outcomes.",
     ],
-    tech: ["Python", "Neural Networks", "Evolutionary Algorithms"],
+    tech: ["Python", "Neural Networks", "Transformers", "LLMs"],
   },
   {
-    role: "Data Scientist",
+    role: "Data Scientist Intern",
     company: "YBI Foundation",
-    period: "Nov 2022 — Dec 2022",
-    bullets: [
-      "Built predictive models using Python that improved forecast accuracy by 15%, directly guiding business planning decisions.",
-      "Automated reporting pipelines with Pandas and Matplotlib, saving the team 10 hours per week on manual analysis.",
-      "Developed an NLP-powered music recommendation system using TF-IDF vectorization and cosine similarity for content-based relevance scoring.",
-    ],
-    tech: ["Python", "NLP", "scikit-learn", "TF-IDF", "Pandas"],
-  },
-  {
-    role: "Data Analyst",
-    company: "Edulyt India",
     period: "Dec 2023 — Mar 2024",
     bullets: [
-      "Engineered automated SQL/Python ETL pipelines that replaced manual Excel-based reporting, saving 20+ hours per month on data cleaning workflows.",
-      "Designed KPI dashboards adopted by 50+ users for weekly stakeholder reviews, enabling data-driven operational decisions.",
-      "Built reusable data transformation modules that standardized ingestion-to-reporting workflows across multiple data sources.",
+      "Improved forecasting accuracy by 15% over baseline approaches by building and optimizing predictive machine learning models.",
+      "Reduced manual reporting effort by 10+ hours per week by automating data analysis and reporting pipelines with Pandas and Matplotlib.",
+      "Developed visual dashboards and reports communicating analytical insights to both technical and non-technical stakeholders.",
     ],
-    tech: ["Python", "SQL", "ETL", "KPI Dashboards", "Power BI"],
+    tech: ["Python", "scikit-learn", "Pandas", "Matplotlib", "Predictive Modeling"],
+  },
+  {
+    role: "Data Analyst Intern",
+    company: "Edulyt India (Airkrit India)",
+    period: "Aug 2023 — Sep 2023",
+    bullets: [
+      "Analyzed 100K+ student engagement records using SQL and Excel, improving reporting accuracy and operational analytics.",
+      "Built interactive Power BI dashboards for KPI tracking, trend analysis, and stakeholder reporting, enabling faster data-driven decisions.",
+      "Contributed to a 12% improvement in student retention by identifying key behavioral engagement patterns.",
+    ],
+    tech: ["SQL", "Excel", "Power BI", "Data Analysis"],
   },
 ];
 
@@ -303,10 +313,10 @@ export const education: Education[] = [
     ],
   },
   {
-    degree: "Bachelor of Technology in Artificial Intelligence",
+    degree: "Bachelor of Technology in Computer Science (AI Specialization)",
     institution: "Parul University",
     location: "India",
-    period: "2020 — 2024",
+    period: "2020 — May 2024",
     details: "GPA: 8.34 / 10",
   },
 ];
