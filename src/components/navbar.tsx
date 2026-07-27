@@ -2,14 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X, FileText, Sun, Moon } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/data";
+import { useTheme } from "./theme-provider";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const mounted = useRef(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     mounted.current = true;
@@ -83,6 +85,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <button
+            onClick={toggleTheme}
+            className="rounded-lg p-2 text-text-secondary transition-colors hover:bg-surface hover:text-text-primary"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
           <a
             href={siteConfig.resumeUrl}
             target="_blank"
@@ -94,14 +103,24 @@ export default function Navbar() {
           </a>
         </div>
 
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-text-secondary md:hidden"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Mobile: theme toggle + hamburger */}
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="rounded-lg p-2 text-text-secondary transition-colors hover:text-text-primary"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-text-secondary"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,6 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const GA_ID = "G-X73LVN8XHW";
+
 export const metadata: Metadata = {
   title: "Lenin Goud Athikam — AI/ML Engineer & Data Scientist",
   description:
@@ -22,11 +25,13 @@ export const metadata: Metadata = {
     "AI Engineer",
     "Machine Learning Engineer",
     "Data Scientist",
+    "Data Engineer",
     "LLM",
     "RAG",
     "Python",
     "PyTorch",
     "TensorFlow",
+    "Multi-Agent Systems",
   ],
   authors: [{ name: "Lenin Goud Athikam" }],
   creator: "Lenin Goud Athikam",
@@ -37,14 +42,23 @@ export const metadata: Metadata = {
     url: "https://leningoud.netlify.app",
     title: "Lenin Goud Athikam — AI/ML Engineer & Data Scientist",
     description:
-      "AI/ML Engineer with an MS in Data Science. Building LLM agents, RAG pipelines, and production ML systems.",
+      "Recent MS graduate building LLM agents, RAG pipelines, and production ML systems. Open to Data Science, ML Engineering, and AI Engineering roles.",
     siteName: "Lenin Goud Athikam",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Lenin Goud Athikam — AI/ML Engineer & Data Scientist",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lenin Goud Athikam — AI/ML Engineer & Data Scientist",
     description:
-      "AI/ML Engineer with an MS in Data Science. Building LLM agents, RAG pipelines, and production ML systems.",
+      "Recent MS graduate building LLM agents, RAG pipelines, and production ML systems.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -69,9 +83,9 @@ const jsonLd = {
   "@type": "Person",
   name: "Lenin Goud Athikam",
   url: "https://leningoud.netlify.app",
-  jobTitle: "AI/ML Engineer",
+  jobTitle: "AI/ML Engineer & Data Scientist",
   description:
-    "AI/ML Engineer specializing in LLM agents, RAG pipelines, and production ML systems.",
+    "Recent MS graduate specializing in LLM agents, RAG pipelines, and production ML systems. Open to Data Science, ML Engineering, and AI Engineering roles.",
   email: "lathikam@mtu.edu",
   sameAs: [
     "https://github.com/leninathikam",
@@ -94,10 +108,32 @@ const jsonLd = {
     "Python",
     "LLM Agents",
     "RAG Pipelines",
+    "Multi-Agent Systems",
     "PyTorch",
     "TensorFlow",
+    "SQL",
+  ],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "Master of Science in Data Science",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "Bachelor of Technology in Artificial Intelligence",
+    },
   ],
 };
+
+const themeScript = `
+  (function() {
+    var t = localStorage.getItem('theme');
+    if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+`;
 
 export default function RootLayout({
   children,
@@ -105,14 +141,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

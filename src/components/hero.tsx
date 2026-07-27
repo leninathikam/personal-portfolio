@@ -22,12 +22,11 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            "linear-gradient(var(--color-text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-text-primary) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
-      {/* Radial fade to blend grid edges */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0a0a0b_70%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--color-background)_70%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-3xl">
         <motion.p
@@ -61,7 +60,7 @@ export default function Hero() {
           animate="visible"
           className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
         >
-          AI/ML Engineer specializing in LLM agents, RAG pipelines, and
+          Recent MS graduate specializing in LLM agents, RAG pipelines, and
           production machine learning. Seeking full-time roles in Data Science,
           ML Engineering, and AI Engineering.
         </motion.p>
@@ -128,7 +127,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Subtle scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

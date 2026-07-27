@@ -1,3 +1,4 @@
+import ThemeProvider from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
 import About from "@/components/about";
@@ -10,8 +11,7 @@ import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <>
-      {/* Skip to main content for accessibility */}
+    <ThemeProvider>
       <a
         href="#about"
         className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0"
@@ -48,6 +48,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }

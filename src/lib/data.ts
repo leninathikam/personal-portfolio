@@ -35,6 +35,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "AI Council — Multi-Agent Collaboration Framework",
+    slug: "ai-council",
+    category: "LLM Agents",
+    summary:
+      "Framework where multiple AI models (Gemini, Claude, GPT, Ollama) collaborate through structured discussion modes with specialized roles.",
+    problem:
+      "Single-model AI responses lack the depth and reliability that comes from multi-perspective analysis, critique, and validation.",
+    solution:
+      "Built a multi-agent framework with specialized roles (Proposer, Critic, Corrector, Validator) supporting Round Robin, Debate, Deep Analysis, Code Review, and Executive discussion modes. Includes auto-fallback, circuit breaker protection, and token optimization.",
+    results:
+      "Reduced token usage by 40–70% through optimization. Supports 5 discussion modes across 4+ model providers. Rich CLI with minimal-config setup wizard.",
+    stack: ["Python", "Multi-Agent", "Gemini", "Claude", "GPT", "Ollama"],
+    github: "https://github.com/leninathikam/ai-council",
+    featured: true,
+  },
+  {
     title: "AI-Powered Agentic Workflow",
     slug: "agentic-workflow",
     category: "LLM Agents",
@@ -100,16 +116,16 @@ export const projects: Project[] = [
     stack: ["Python", "smolagents", "SQLite", "Multi-Agent"],
     github:
       "https://github.com/leninathikam/The-Beaver-s-Choice-Paper-Company-Sales-Team-",
-    featured: true,
+    featured: false,
   },
   {
     title: "Spotify Hybrid Recommender",
     slug: "spotify-recommender",
     category: "Machine Learning",
     summary:
-      "Hybrid music recommender with Streamlit UI, pytest tests, and deploy-ready artifacts.",
+      "Hybrid music recommender combining collaborative and content-based filtering with Streamlit UI.",
     problem:
-      "Single-approach recommenders (collaborative or content-based) miss relevant suggestions because they only capture one dimension of user preference.",
+      "Single-approach recommenders miss relevant suggestions because they only capture one dimension of user preference.",
     solution:
       "Built a hybrid recommender combining collaborative filtering and content-based methods. Includes a Streamlit interface, pytest test suite, and deployment-ready artifact packaging.",
     results:
@@ -186,6 +202,7 @@ export const skillCategories: SkillCategory[] = [
       "smolagents",
       "Vector Databases",
       "Prompt Engineering",
+      "Multi-Agent Systems",
     ],
   },
   {
@@ -216,26 +233,48 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    role: "Data Science Intern",
-    company: "Edulyt India",
-    period: "Dec 2023 — Mar 2024",
+    role: "Research Assistant",
+    company: "Michigan Technological University",
+    period: "Jan 2025 — Apr 2026",
     bullets: [
-      "Engineered automated SQL/Python ETL pipelines that replaced manual Excel-based reporting, reducing weekly report preparation time for stakeholder reviews.",
-      "Designed aggregation queries and KPI dashboards used in weekly stakeholder reviews, enabling data-driven operational decisions.",
-      "Built reusable data transformation modules that standardized ingestion-to-reporting workflows across multiple data sources.",
+      "Designed and built multi-agent AI systems with structured collaboration modes (debate, deep analysis, code review) across Gemini, Claude, and GPT models.",
+      "Developed RAG pipelines with modular retrieval, embedding, and evaluation components — enabling measurable comparison of retrieval strategies.",
+      "Published 5+ open-source AI/ML projects on GitHub covering agentic workflows, NLP, and recommendation systems.",
     ],
-    tech: ["Python", "SQL", "ETL", "KPI Dashboards"],
+    tech: ["Python", "LangChain", "RAG", "Multi-Agent", "Vector DBs"],
   },
   {
-    role: "Data Science Intern",
+    role: "Computational Intelligence Teaching Assistant",
+    company: "Michigan Technological University",
+    period: "Aug 2025 — Dec 2025",
+    bullets: [
+      "Assisted instruction for graduate-level Computational Intelligence course covering neural networks, evolutionary algorithms, and fuzzy systems.",
+      "Graded assignments and provided detailed feedback to 30+ students on ML model implementations and algorithm analysis.",
+      "Held weekly office hours to support students with Python-based ML project development and debugging.",
+    ],
+    tech: ["Python", "Neural Networks", "Evolutionary Algorithms"],
+  },
+  {
+    role: "Data Scientist",
     company: "YBI Foundation",
     period: "Nov 2022 — Dec 2022",
     bullets: [
+      "Built predictive models using Python that improved forecast accuracy by 15%, directly guiding business planning decisions.",
+      "Automated reporting pipelines with Pandas and Matplotlib, saving the team 10 hours per week on manual analysis.",
       "Developed an NLP-powered music recommendation system using TF-IDF vectorization and cosine similarity for content-based relevance scoring.",
-      "Implemented full text preprocessing pipeline — tokenization, stemming, stop-word removal — and evaluated recommendation quality with precision/recall metrics.",
-      "Delivered complete project from data collection to working recommender in 8 weeks, demonstrating end-to-end ML execution.",
     ],
-    tech: ["Python", "NLP", "scikit-learn", "TF-IDF"],
+    tech: ["Python", "NLP", "scikit-learn", "TF-IDF", "Pandas"],
+  },
+  {
+    role: "Data Analyst",
+    company: "Edulyt India",
+    period: "Dec 2023 — Mar 2024",
+    bullets: [
+      "Engineered automated SQL/Python ETL pipelines that replaced manual Excel-based reporting, saving 20+ hours per month on data cleaning workflows.",
+      "Designed KPI dashboards adopted by 50+ users for weekly stakeholder reviews, enabling data-driven operational decisions.",
+      "Built reusable data transformation modules that standardized ingestion-to-reporting workflows across multiple data sources.",
+    ],
+    tech: ["Python", "SQL", "ETL", "KPI Dashboards", "Power BI"],
   },
 ];
 
@@ -253,7 +292,7 @@ export const education: Education[] = [
     degree: "Master of Science in Data Science",
     institution: "Michigan Technological University",
     location: "Houghton, Michigan",
-    period: "2024 — 2026",
+    period: "Aug 2024 — Apr 2026",
     details: "",
     coursework: [
       "Big Data Analytics",
@@ -264,7 +303,7 @@ export const education: Education[] = [
     ],
   },
   {
-    degree: "Bachelor's in Artificial Intelligence",
+    degree: "Bachelor of Technology in Artificial Intelligence",
     institution: "Parul University",
     location: "India",
     period: "2020 — 2024",
@@ -293,5 +332,12 @@ export const certifications: Certification[] = [
     date: "2023",
     courses:
       "8-course program in data cleaning, Tableau/R visualization, SQL, and stakeholder-ready analytics.",
+  },
+  {
+    title: "DataCamp Associate Data Scientist",
+    issuer: "DataCamp",
+    date: "2023",
+    courses:
+      "Certification covering Python programming, data manipulation, statistical analysis, and machine learning fundamentals.",
   },
 ];

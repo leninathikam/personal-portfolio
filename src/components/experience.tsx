@@ -16,14 +16,13 @@ export default function Experience() {
         <div className="relative space-y-8 pl-8 before:absolute before:left-[7px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-border">
           {experiences.map((exp, i) => (
             <motion.div
-              key={exp.company}
+              key={`${exp.company}-${exp.role}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative"
             >
-              {/* Timeline dot */}
               <div className="absolute -left-8 top-1.5 h-[15px] w-[15px] rounded-full border-2 border-accent bg-background" />
 
               <div className="rounded-xl border border-border bg-surface p-6">

@@ -46,31 +46,32 @@ export default function About() {
             className="lg:col-span-3"
           >
             <p className="text-lg leading-relaxed text-text-secondary">
-              I&apos;m finishing my MS in Data Science at Michigan Tech, where I
-              focus on building AI systems that actually ship — multi-agent LLM
-              workflows, RAG pipelines with evaluation loops, and ML models with
-              testing and deployment baked in.
+              I recently completed my MS in Data Science at Michigan Tech, where
+              I spent two years building AI systems that actually ship —
+              multi-agent LLM frameworks, RAG pipelines with evaluation loops,
+              and ML models with testing and deployment baked in.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-              Before grad school, I earned a BS in Artificial Intelligence from
-              Parul University and interned on data engineering and NLP
-              recommender systems. I care about the full lifecycle: from data
-              quality to model performance to production reliability.
+              As a Research Assistant, I designed multi-agent collaboration
+              systems and published 5+ open-source projects. Before grad school,
+              I earned a B.Tech in AI from Parul University and worked as a Data
+              Scientist and Data Analyst, where I automated reporting workflows
+              saving 20+ hours/month and built dashboards adopted by 50+ users.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-              Currently seeking full-time{" "}
-              <span className="text-text-primary font-medium">
+              Actively seeking full-time{" "}
+              <span className="font-medium text-text-primary">
                 Data Scientist
               </span>
               ,{" "}
-              <span className="text-text-primary font-medium">
+              <span className="font-medium text-text-primary">
                 ML Engineer
               </span>
               , or{" "}
-              <span className="text-text-primary font-medium">
+              <span className="font-medium text-text-primary">
                 AI Engineer
               </span>{" "}
-              roles starting 2026.
+              roles — open to relocating anywhere in the US.
             </p>
           </motion.div>
 
@@ -89,9 +90,10 @@ export default function About() {
                 {[
                   ["Education", "MS Data Science, Michigan Tech"],
                   ["Focus", "LLM Agents, RAG, Production ML"],
-                  ["Projects", "7+ end-to-end ML/AI systems"],
-                  ["Location", "Houghton, MI (open to relocate)"],
-                  ["Status", "Graduating 2026"],
+                  ["Projects", "8+ end-to-end ML/AI systems"],
+                  ["Experience", "Research + 2 industry internships"],
+                  ["Location", "Open to relocate (US)"],
+                  ["Status", "MS Graduated, Apr 2026"],
                 ].map(([label, value]) => (
                   <li key={label} className="flex justify-between gap-4">
                     <span className="text-sm text-text-tertiary">{label}</span>

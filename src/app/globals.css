@@ -17,6 +17,21 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+/* Light theme overrides */
+:root[data-theme="light"] {
+  --color-background: #ffffff;
+  --color-surface: #f4f4f5;
+  --color-surface-elevated: #e4e4e7;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.16);
+  --color-text-primary: #09090b;
+  --color-text-secondary: #52525b;
+  --color-text-tertiary: #71717a;
+  --color-accent: #2563eb;
+  --color-accent-soft: rgba(37, 99, 235, 0.08);
+  --color-accent-hover: #1d4ed8;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
@@ -28,11 +43,16 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background-color: rgba(59, 130, 246, 0.3);
   color: #fff;
+}
+
+:root[data-theme="light"] ::selection {
+  color: #09090b;
 }
 
 ::-webkit-scrollbar {
@@ -48,18 +68,24 @@ body {
   border-radius: 3px;
 }
 
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Accessible focus styles */
+:root[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
 *:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
