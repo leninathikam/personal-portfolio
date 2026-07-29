@@ -65,10 +65,25 @@ export default function Navbar() {
       >
         <a
           href="#"
-          className="text-sm font-semibold tracking-tight text-text-primary"
+          className="relative flex h-9 w-9 items-center"
+          aria-label={`${siteConfig.name} — Home`}
         >
-          {siteConfig.name.split(" ")[0]}
-          <span className="text-accent">.</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt=""
+            width={36}
+            height={36}
+            className="brand-logo-light h-9 w-9 object-contain"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-dark.png"
+            alt=""
+            width={36}
+            height={36}
+            className="brand-logo-dark absolute inset-0 h-9 w-9 object-contain"
+          />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
