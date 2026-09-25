@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, MapPin, BadgeCheck } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "./icons";
 import { siteConfig } from "@/lib/data";
 
@@ -64,6 +64,23 @@ export default function Hero() {
           production machine learning. Seeking full-time roles in Data Science,
           ML Engineering, and AI Engineering.
         </motion.p>
+
+        <motion.div
+          custom={2.5}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-text-tertiary"
+        >
+          <span className="inline-flex items-center gap-1.5">
+            <MapPin size={13} />
+            {siteConfig.location}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <BadgeCheck size={13} />
+            Open to relocate
+          </span>
+        </motion.div>
 
         <motion.div
           custom={3}

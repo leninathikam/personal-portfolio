@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
@@ -12,10 +12,14 @@ import {
   MessageSquare,
   BarChart3,
   Database,
+  FileText,
+  X,
 } from "lucide-react";
 import { GitHubIcon } from "./icons";
 import SectionHeading from "./section-heading";
 import { projects, type Project } from "@/lib/data";
+import { trackEvent } from "@/lib/analytics";
+import { TECH_FILTER_EVENT } from "./skills";
 
 const categories = [
   "All",
@@ -29,11 +33,30 @@ const categoryIcons: Record<string, typeof Bot> = {
   "Data Engineering": Database,
 };
 
+function normalize(s: string) {
+  return s.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function projectMatchesTech(project: Project, tech: string) {
+  const needle = normalize(tech);
+  return project.stack.some((s) => {
+    const hay = normalize(s);
+    return hay.includes(needle) || needle.includes(hay);
+  });
+}
+
 function CategoryBanner({ category }: { category: string }) {
   const Icon = categoryIcons[category] ?? Bot;
   return (
-    <div className="relative flex h-24 items-center justify-center overflow-hidden bg-gradient-to-br from-accent/15 via-surface to-accent/5">
-      <Icon size={36} className="text-accent/70" strokeWidth={1.5} />
+    <div className="relative overflow-hidden bg-gradient-to-br from-accent/15 via-surface to-accent/5">
+      <div className="flex items-center gap-1.5 border-b border-border/60 px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-text-tertiary/30" />
+        <span className="h-2 w-2 rounded-full bg-text-tertiary/30" />
+        <span className="h-2 w-2 rounded-full bg-text-tertiary/30" />
+      </div>
+      <div className="flex h-20 items-center justify-center">
+        <Icon size={32} className="text-accent/70" strokeWidth={1.5} />
+      </div>
     </div>
   );
 }
@@ -173,7 +196,10 @@ function FeaturedCard({
 
         {/* Expandable details */}
         <button
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => {
+            setExpanded(!expanded);
+            if (!expanded) trackEvent("project_expand", { project: project.slug });
+          }}
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-hover"
           aria-expanded={expanded}
         >
@@ -241,12 +267,22 @@ function FeaturedCard({
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={`/projects/${project.slug}`}
+              aria-label={`One-pager for ${project.title}`}
+              onClick={() => trackEvent("project_one_pager_click", { project: project.slug })}
+              className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-text-secondary transition-colors hover:border-border-hover hover:text-text-primary"
+            >
+              <FileText size={14} />
+              <span>One-pager</span>
+            </a>
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`GitHub repo for ${project.title}`}
+              onClick={() => trackEvent("project_github_click", { project: project.slug })}
               className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-text-secondary transition-colors hover:border-border-hover hover:text-text-primary"
             >
               <GitHubIcon width={14} height={14} />
@@ -258,6 +294,7 @@ function FeaturedCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Live demo for ${project.title}`}
+                onClick={() => trackEvent("project_demo_click", { project: project.slug })}
                 className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-3 py-1.5 text-sm text-accent transition-colors hover:bg-accent/20"
               >
                 <ExternalLink size={14} />
@@ -312,7 +349,10 @@ function CompactCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       <button
-        onClick={() => setExpanded(!expanded)}
+        onClick={() => {
+          setExpanded(!expanded);
+          if (!expanded) trackEvent("project_expand", { project: project.slug });
+        }}
         className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-medium text-accent transition-colors hover:text-accent-hover"
         aria-expanded={expanded}
       >
@@ -340,12 +380,22 @@ function CompactCard({ project, index }: { project: Project; index: number }) {
         )}
       </AnimatePresence>
 
-      <div className="mt-4 pt-3 border-t border-border">
+      <div className="mt-4 flex items-center gap-4 pt-3 border-t border-border">
+        <a
+          href={`/projects/${project.slug}`}
+          aria-label={`One-pager for ${project.title}`}
+          onClick={() => trackEvent("project_one_pager_click", { project: project.slug })}
+          className="inline-flex items-center gap-1.5 text-sm text-text-tertiary transition-colors hover:text-text-primary"
+        >
+          <FileText size={14} />
+          <span>One-pager</span>
+        </a>
         <a
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`GitHub repo for ${project.title}`}
+          onClick={() => trackEvent("project_github_click", { project: project.slug })}
           className="inline-flex items-center gap-1.5 text-sm text-text-tertiary transition-colors hover:text-text-primary"
         >
           <GitHubIcon width={14} height={14} />
@@ -359,11 +409,21 @@ function CompactCard({ project, index }: { project: Project; index: number }) {
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
+  const [techFilter, setTechFilter] = useState<string | null>(null);
 
-  const filtered =
-    filter === "All"
-      ? projects
-      : projects.filter((p) => p.category === filter);
+  useEffect(() => {
+    function onTechFilter(e: Event) {
+      const tech = (e as CustomEvent<string>).detail;
+      setFilter("All");
+      setTechFilter(tech);
+    }
+    window.addEventListener(TECH_FILTER_EVENT, onTechFilter);
+    return () => window.removeEventListener(TECH_FILTER_EVENT, onTechFilter);
+  }, []);
+
+  const filtered = projects
+    .filter((p) => filter === "All" || p.category === filter)
+    .filter((p) => !techFilter || projectMatchesTech(p, techFilter));
   const featured = filtered.filter((p) => p.featured);
   const other = filtered.filter((p) => !p.featured);
 
@@ -376,13 +436,16 @@ export default function Projects() {
         />
 
         {/* Filters */}
-        <div className="mb-10 flex flex-wrap gap-2">
+        <div className="mb-4 flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => {
+                setFilter(cat);
+                setTechFilter(null);
+              }}
               className={`rounded-lg px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                filter === cat
+                filter === cat && !techFilter
                   ? "bg-accent text-white"
                   : "border border-border bg-surface text-text-secondary hover:text-text-primary"
               }`}
@@ -391,6 +454,29 @@ export default function Projects() {
             </button>
           ))}
         </div>
+
+        {techFilter && (
+          <div className="mb-10 flex items-center gap-2">
+            <span className="text-sm text-text-tertiary">Filtered by skill:</span>
+            <span className="inline-flex items-center gap-1.5 rounded-lg bg-accent/10 px-3 py-1.5 text-sm font-medium text-accent">
+              {techFilter}
+              <button
+                onClick={() => setTechFilter(null)}
+                aria-label="Clear skill filter"
+                className="text-accent/70 hover:text-accent"
+              >
+                <X size={13} />
+              </button>
+            </span>
+          </div>
+        )}
+        {!techFilter && <div className="mb-10" />}
+
+        {filtered.length === 0 && (
+          <p className="text-sm text-text-tertiary">
+            No projects use this skill yet — check back as more work is added.
+          </p>
+        )}
 
         {/* Featured projects */}
         {featured.length > 0 && (

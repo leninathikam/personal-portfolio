@@ -3,6 +3,15 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./section-heading";
 import { skillCategories } from "@/lib/data";
+import { trackEvent } from "@/lib/analytics";
+
+export const TECH_FILTER_EVENT = "portfolio:tech-filter";
+
+function selectSkill(skill: string) {
+  trackEvent("skill_click", { skill });
+  window.dispatchEvent(new CustomEvent(TECH_FILTER_EVENT, { detail: skill }));
+  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+}
 
 export default function Skills() {
   return (
@@ -10,7 +19,7 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           title="Skills & Expertise"
-          subtitle="Technologies and tools I use to build, train, and deploy AI systems."
+          subtitle="Technologies and tools I use to build, train, and deploy AI systems. Click any skill to see the projects that use it."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -28,12 +37,14 @@ export default function Skills() {
               </h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span
+                  <button
                     key={skill}
-                    className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-text-secondary transition-colors hover:border-border-hover hover:text-text-primary"
+                    type="button"
+                    onClick={() => selectSkill(skill)}
+                    className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-text-secondary transition-colors hover:border-accent/40 hover:text-accent"
                   >
                     {skill}
-                  </span>
+                  </button>
                 ))}
               </div>
             </motion.div>
