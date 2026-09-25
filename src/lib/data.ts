@@ -28,9 +28,13 @@ export interface Project {
   problem: string;
   solution: string;
   results: string;
+  architecture: string[];
+  metrics: string[];
+  role: string;
   stack: string[];
   github: string;
   demo?: string;
+  videoUrl?: string;
   featured: boolean;
 }
 
@@ -47,6 +51,16 @@ export const projects: Project[] = [
       "Built a production-ready conversational digital twin by integrating LLMs, contextual memory, and RAG pipelines with ChromaDB vector search and optimized chunking strategies. Deployed on Hugging Face Spaces with real-time inference and API integration.",
     results:
       "Live conversational AI with scalable interaction workflows deployed to production. End-to-end system covering prompt engineering, tokenization, API cost management, and real-time inference.",
+    architecture: [
+      "Ingest resume, background & project content",
+      "Chunk and embed into ChromaDB vector store",
+      "Retrieve relevant context per visitor question (RAG)",
+      "LLM generates a conversational, memory-aware answer",
+      "Tool call sends a notification when a visitor wants to connect",
+      "Served via API on Hugging Face Spaces",
+    ],
+    metrics: ["Live in production", "Real-time inference", "RAG + tool calling"],
+    role: "Solo project",
     stack: ["Python", "LangChain", "ChromaDB", "Hugging Face", "RAG", "Tool Calling"],
     github: "https://github.com/leninathikam",
     demo: "https://huggingface.co/spaces/Leningoud/digital-twin",
@@ -64,6 +78,15 @@ export const projects: Project[] = [
       "Designed autonomous agent collaboration and task orchestration using CrewAI and LangChain. Built specialized AI agents for requirement analysis, task planning, progress tracking, and report generation with memory-aware communication and tool calling.",
     results:
       "End-to-end multi-agent workflow that reduces manual coordination effort. Autonomous agents handle requirement analysis through report generation with memory-aware communication.",
+    architecture: [
+      "Product brief goes to an Action Planning Agent that breaks it into steps",
+      "A Routing Agent (embedding-similarity based) dispatches each step",
+      "Specialist agents (Product Manager, Program Manager, Dev Engineer) execute their step",
+      "Each specialist is wrapped in an evaluator-optimizer loop for format/content correction",
+      "Outputs are assembled into user stories, features, and engineering tasks",
+    ],
+    metrics: ["7 specialized agents", "Evaluator-optimizer QA loop", "Fully autonomous pipeline"],
+    role: "Solo project",
     stack: ["Python", "CrewAI", "LangChain", "OpenAI API"],
     github:
       "https://github.com/leninathikam/AI-Powered-Agentic-Workflow-for-Project-Management",
@@ -81,6 +104,16 @@ export const projects: Project[] = [
       "Built a RAG-based research agent with a 12-module library covering ingestion, chunking, embedding, retrieval, memory, tool use, and response generation. Supports swappable vector DBs and embedding models.",
     results:
       "Full retrieval-augmented pipeline with measurable retrieval quality. Modular architecture allows swapping vector DBs, embedding models, and retrieval strategies independently.",
+    architecture: [
+      "Game catalog (15+ records) is chunked and embedded into a vector store",
+      "User query is embedded and matched against the catalog (retrieval)",
+      "An LLM-as-judge evaluates whether retrieval was good enough to answer",
+      "On weak retrieval, the agent falls back to live web search",
+      "Response generation module composes the final grounded answer",
+      "Served through a Streamlit chat demo",
+    ],
+    metrics: ["15+ game records indexed", "12-module RAG library", "Swappable vector DB / embeddings"],
+    role: "Solo project",
     stack: ["Python", "RAG", "Vector DB", "LangChain"],
     github:
       "https://github.com/leninathikam/UdaPlay---An-AI-Research-Agent-for-the-Video-Game-Industry",
@@ -98,6 +131,15 @@ export const projects: Project[] = [
       "Built a Chrome extension with a complete ML pipeline: training data collection, text preprocessing, scikit-learn model training, and real-time prediction on live YouTube pages.",
     results:
       "NLP sentiment classification achieving 87% accuracy across 10K+ YouTube comments. Real-time Chrome extension integrated with Flask backend for automated comment analysis.",
+    architecture: [
+      "Collect and label training comments",
+      "Preprocess text (cleaning, tokenization, vectorization)",
+      "Train and evaluate a scikit-learn classification model",
+      "Serve predictions through a Flask backend API",
+      "Chrome extension calls the API and overlays sentiment on live YouTube pages",
+    ],
+    metrics: ["87% accuracy", "10K+ comments analyzed", "Real-time in-browser predictions"],
+    role: "Solo project",
     stack: ["Python", "scikit-learn", "Chrome Extension", "NLP"],
     github:
       "https://github.com/leninathikam/youtube_comment_analysis_chrome_plugin",
@@ -115,6 +157,15 @@ export const projects: Project[] = [
       "Built an orchestrator agent coordinating specialized agents for pricing, inventory validation, and supplier estimation. SQLite-based tools enable real-time fulfillment updates across the pipeline.",
     results:
       "Improved operational efficiency through automated customer inquiry handling, quote generation, and order fulfillment with real-time inventory tracking.",
+    architecture: [
+      "Free-text customer order comes in to an Orchestrator agent",
+      "Inventory Agent checks stock against a SQLite catalog",
+      "Quoting Agent prices the order with bulk-discount rules",
+      "Sales Agent finalizes the sale and updates inventory/financials",
+      "Orchestrator returns the final quote/confirmation to the customer",
+    ],
+    metrics: ["3-agent orchestration", "Real-time inventory tracking", "Automated quote-to-fulfillment"],
+    role: "Solo project",
     stack: ["Python", "Agentic AI", "SQLite", "Multi-Agent Systems"],
     github:
       "https://github.com/leninathikam/The-Beaver-s-Choice-Paper-Company-Sales-Team-",
@@ -132,6 +183,15 @@ export const projects: Project[] = [
       "Built a hybrid recommender combining collaborative filtering and content-based methods. Includes a Streamlit interface, pytest test suite, and deployment-ready artifact packaging.",
     results:
       "Improved playlist recommendation precision by 22% through hybrid filtering with similarity-based ranking. Production-ready with automated tests, interactive Streamlit UI, and deployable artifacts.",
+    architecture: [
+      "Clean raw track/listening data",
+      "Content-based branch: TF-IDF tags + audio features -> cosine similarity",
+      "Collaborative branch: sparse track-user play-count matrix -> cosine similarity",
+      "Hybrid layer blends both similarity scores with a tunable weight",
+      "Streamlit UI serves ranked recommendations with a diversity slider",
+    ],
+    metrics: ["+22% recommendation precision", "pytest test suite", "Deployable Streamlit app"],
+    role: "Solo project",
     stack: ["Python", "Streamlit", "Hybrid Filtering", "pytest"],
     github:
       "https://github.com/leninathikam/spotify-hybrid-recommender-system",
@@ -149,6 +209,16 @@ export const projects: Project[] = [
       "Comprehensive ML pipeline with 10+ notebooks covering EDA, feature engineering, and model tuning. Compared LightGBM, Random Forest, and stacking ensembles for optimal prediction accuracy.",
     results:
       "Reduced prediction RMSE by 15% with tuned Gradient Boosting and XGBoost models. Optimized pipeline reduced inference latency by 25%.",
+    architecture: [
+      "DVC pipeline stage: clean raw delivery data",
+      "Split into train/test sets",
+      "Preprocess and engineer features",
+      "Train Random Forest + LightGBM, stack with a Linear Regression meta-model",
+      "Evaluate and register the best model (MLflow/DagsHub tracked)",
+      "Serve predictions through a FastAPI endpoint",
+    ],
+    metrics: ["-15% prediction RMSE", "-25% inference latency", "MLflow-tracked experiments"],
+    role: "Solo project",
     stack: ["Python", "LightGBM", "Random Forest", "Stacking"],
     github: "https://github.com/leninathikam/swiggy-delivery-time-prediction",
     featured: false,
@@ -165,6 +235,14 @@ export const projects: Project[] = [
       "Built an automated ETL pipeline handling repeatable data ingestion, cleaning, transformation, and reporting. Designed for reproducibility and minimal manual intervention.",
     results:
       "Automated previously manual reporting workflows. Repeatable pipeline reduced data preparation time and improved consistency across reporting cycles.",
+    architecture: [
+      "Extract data from source systems on a schedule",
+      "Clean and transform records into a consistent schema",
+      "Load into the target store",
+      "Generate reports with minimal manual intervention",
+    ],
+    metrics: ["Fully automated pipeline", "Reduced reporting turnaround", "Reproducible by design"],
+    role: "Solo project",
     stack: ["Python", "SQL", "ETL", "Automation"],
     github: "https://github.com/leninathikam/etl-pipeline-automation",
     featured: false,
